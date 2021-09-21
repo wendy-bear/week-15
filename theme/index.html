@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Выберите тему <select name="" id="list" onchange="changeColor()">
+        <option value="color-white" id="white">Белая</option>
+        <option value="color-black" id="black">Черная</option>
+        <option value="color-blue" id="blue">Синяя</option>
+    </select>
+    <h1>Это мой веб-сайт</h1>
+
+    <script>
+        function changeColor() {
+           if (document.getElementById("list").value == "color-white") {
+               document.body.style.background = "#FFFFFF";
+           }
+           if (document.getElementById("list").value == "color-black") {
+               document.body.style.background = "#696969";
+           }
+           if (document.getElementById("list").value == "color-blue") {
+               document.body.style.background = "#008080";
+           }
+
+        }
+
+    </script>
+    
+</body>
+</html>
