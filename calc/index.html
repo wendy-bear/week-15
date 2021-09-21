@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="element1" value="">
+    <input type="text" id="element2" value="">
+    <button onclick="calcSum()">+</button>
+    <button onclick="calcSubtr()">-</button>
+    <button onclick="calcMult()">*</button>
+    <button onclick="calcDiv()">/</button>
+    <input type="text" id="answer" value="">
+    
+    <script>
+    function calcSum() {
+        let a = +document.getElementById("element1").value;
+        let b = +document.getElementById("element2").value;
+        document.getElementById("answer").value = a+b;
+    }
+    function calcSubtr() {
+        let a = +document.getElementById("element1").value;
+        let b = +document.getElementById("element2").value;
+        document.getElementById("answer").value = a-b;
+    }
+    function calcMult() {
+        let a = +document.getElementById("element1").value;
+        let b = +document.getElementById("element2").value;
+        document.getElementById("answer").value = a*b;
+    }
+    function calcDiv() {
+        let a = +document.getElementById("element1").value;
+        let b = +document.getElementById("element2").value;
+        document.getElementById("answer").value = a/b;
+        if(b == 0) {
+            document.getElementById("answer").value = "На ноль делить нельзя!";
+            //alert("На ноль делить нельзя!");
+        }
+    }
+    
+
+    </script>
+</body>
+</html>
