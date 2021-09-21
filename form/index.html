@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .regform {
+            display: flex;
+            justify-content: center;
+            
+        }
+        .regform_wrapper {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-flow: column nowrap; 
+            border-radius: 10px;
+            border: 15px solid #8FBC8F;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, label {
+            margin: 5px;
+        }
+        
+        button {
+            width: 150px;
+            height: 30px;
+            background-color: #8FBC8F;
+            margin: 20px;
+            font-size: medium;
+        }
+        .regform_button {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+            .errors {
+            color: crimson;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="regform">
+        <div class="regform_wrapper">
+            <h1>Создание аккаунта</h1>
+            <form>
+                <div class="regform_name">
+                    <label>Имя:</label>
+                    <input type="text" placeholder="Ваше имя" id="name" value="" class="filled">
+                    <br>
+                                       
+                    <label>Фамилия:</label>
+                    <input type="text" placeholder="Ваша фамилия" id="surname" value="" class="filled">
+                    <br>
+
+                    <label>Дата рождения:</label>
+                    <input type="text" placeholder="День" id="day">
+                    <br>
+
+                    <input type="text" placeholder="Месяц (цифрами)" id="month">
+                    <br>  
+
+                    <input type="text" placeholder="Год рождения" id="year">
+                    <br>
+
+                    <label for="">Пол:</label>
+                    <input type="radio" name="Пол" id="woman" value="">Женский
+                    <input type="radio" name="Пол" id="man" value="">Мужской
+                    <br>
+
+                    <label for="">Ваш email:</label>
+                    <input type="email" name="" id="email">
+                    <br>
+
+                    <label for="">Придумайте пароль:</label>
+                    <input type="password" name="" id="password" placeholder="не менее 8 цифр">
+                    <br>
+
+                    <label for="">Повторите пароль:</label>
+                    <input type="password" name="" id="password_repeat" placeholder="Пароли должны совпадать">
+                    <br>
+
+                    <div class="errors" id="error_all"></div>
+
+                    <div class="regform_button">
+                        <button type="button" onclick="formValid()">Отправить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function formValid() {
+            let nameForm = document.getElementById("name");
+            let surnameForm = document.getElementById("surname");
+            let dayForm = document.getElementById("day");
+            let monthForm = document.getElementById("month");
+            let yearForm = document.getElementById("year");
+            let womanForm = document.getElementById("woman");
+            let manForm = document.getElementById("man");
+            let emailForm = document.getElementById("email");
+            let passwordForm = document.getElementById("password");
+            let repeatPasswordForm = document.getElementById("password_repeat");
+            let greet = "Добро пожаловать, ";
+            let greetName = document.getElementById("name").value;
+            document.getElementById("error_all").innerHTML = "";
+
+                if (nameForm.value == "") {
+                    document.getElementById("error_all").innerHTML+= "Введите имя<br>";
+                }       
+                if (surnameForm.value == "") {
+                    document.getElementById("error_all").innerHTML+= "Введите фамилию<br>";
+                }
+                if (dayForm.value > 31) {
+                document.getElementById("error_all").innerHTML+= "Такой даты не существует!<br>";
+               } else if (dayForm.value <= 0) {
+                document.getElementById("error_all").innerHTML+= "Такой даты не существует!<br>";
+               }
+                if (monthForm.value > 12) {
+                document.getElementById("error_all").innerHTML+= "Такого месяца не существует!<br>";
+            } else if (monthForm.value <= 0) {
+                document.getElementById("error_all").innerHTML+= "Такого месяца не существует!<br>"; 
+            }
+            if (yearForm.value > 2022) {
+                document.getElementById("error_all").innerHTML+= "Будущее еще не наступило!<br>";
+            } else if (yearForm.value <= 1920) {
+                document.getElementById("error_all").innerHTML+= "Вы уже умерли?<br>"; 
+            } else if (yearForm.value <= 0) {
+                document.getElementById("error_all").innerHTML+= "Введите год рождения<br>"; 
+            }
+            if (document.getElementById("woman").value.checked == false) {
+                document.getElementById("error_all").innerHTML+= "Выберите пол<br>";
+            } else if (document.getElementById("man").value.checked == false) {
+                document.getElementById("error_all").innerHTML+= "Выберите пол<br>";
+            }
+            if (emailForm.value.length <= 8) {
+                document.getElementById("error_all").innerHTML+= "Введите email<br>";
+            } else if (emailForm.value = "") {
+                document.getElementById("error_all").innerHTML+= "Введите email<br>"; 
+            }
+            if (passwordForm.value == "") {
+                    document.getElementById("error_all").innerHTML+= "Введите пароль<br>";
+                } else if (passwordForm.value.length<= 8) {
+                    document.getElementById("error_all").innerHTML+= "Пароль слишком короткий<br>";    
+                }
+            if (!(document.getElementById("password_repeat").value == document.getElementById("password").value)) {
+                    document.getElementById("error_all").innerHTML+= "Пароли должны совпадать<br>";
+                }  else if (repeatPasswordForm.value == "") {
+                    document.getElementById("error_all").innerHTML+= "Пароли должны совпадать<br>";
+                } 
+            if (error_all.innerHTML == "") {
+                alert(greet + greetName);
+            }
+   
+}    
+
+    </script>
+</body>
+</html>
